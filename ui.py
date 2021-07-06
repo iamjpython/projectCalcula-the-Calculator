@@ -106,7 +106,19 @@ class Calculator:
     def button_click(self,num):
         dis = self.e.get()
         self.e.delete(0,END)
-        self.e.insert(0,str(dis)+str(num)) 
+        self.e.insert(0,str(dis)+str(num))
+      
+    def ac(self):
+        pass
+
+    def delete(self):
+        pass
+
+    def evaluate(self):
+        pass
+        
+    def sccalc(self,event):
+        pass
 
     def run(self):
         self.root.mainloop()
