@@ -134,7 +134,7 @@ class Calculator:
 
     def evaluate(self):
         pass
-            
+    
     def sccalc(self,event):
         button = event.widget
         text = button["text"]
@@ -239,6 +239,7 @@ class Calculator:
         self.e.delete(0, END)
         self.e.insert(END, ans)
 
+        
 
 
     def website(self):
