@@ -126,3 +126,4 @@ class Calcula():
         input = num
         ans = math.pi*input
         return ans
+    
