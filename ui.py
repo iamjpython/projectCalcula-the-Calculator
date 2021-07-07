@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter.constants import E, END, SUNKEN, W
+import webbrowser
+import tkinter.messagebox as message
 class Calculator:
 
     def __init__(self) -> None:
@@ -10,6 +12,19 @@ class Calculator:
         self.e.grid(row=0, column=0,columnspan=5, padx=10, pady=50) #pady gap between input and button
         self.label = tk.Label(self.root, text = "projectCalcula", bd=1, relief=SUNKEN, font="italic").grid(row=8, column=0, columnspan=7, sticky=W+E)
 
+        self.menuinfo = tk.Menu(self.root)
+        self.m1 = tk.Menu(self.menuinfo, tearoff=0)
+        self.m1.add_command(label="Github Website", command=self.website)
+        self.m1.add_command(label="Group Info", command=self.info)
+
+        self.m2 = tk.Menu(self.menuinfo, tearoff=0)
+        self.m2.add_command(label="Calculator Operation", command=self.operation)
+        self.m2.add_command(label="Errors", command=self.error)
+
+        self.root.config(menu=self.menuinfo)
+        self.menuinfo.add_cascade(label="About Us", menu=self.m1)
+        self.menuinfo.add_cascade(label="Instructions", menu=self.m2)
+        
         self.bsin = tk.Button(self.root, text="sin", padx=20, pady=5,bg = "light gray")
         self.bcos = tk.Button(self.root, text="cos", padx=20, pady=5,bg = "light gray")
         self.btan = tk.Button(self.root, text="tan", padx=20, pady=5,bg = "light gray")
@@ -119,7 +134,23 @@ class Calculator:
         
     def sccalc(self,event):
         pass
-
+    
+    
+    def website(self):
+        webbrowser.open("https://github.com/iamjpython/projectCalcula-the-Calculator")
+    
+    def info(self):
+        webbrowser.open("https://drive.google.com/file/d/1m-p92ps5IbUV6MtZ4-oiJv_hxQ-D0cKd/view?usp=sharing")   
+    
+    def operation(self):
+        return message.showinfo("HOW TO USE CALCULATOR","\t\t   projectCALCULA \n \n \n Leading zeroes results to error.\n When using trigometric functions - input number then click button. \n Calculator functions uses radians.\n log function is in base 10.")
+    
+    def operation(self):
+        return message.showinfo("HOW TO USE CALCULATOR","\t\t   projectCALCULA \n \n \n Leading zeroes results to error.\n When using trigometric functions - input number then click button. \n Calculator functions uses radians.\n log function is in base 10.")
+        
+    def error(self):
+        return message.showwarning("LIST OF ERRORS","\t\t   project Calcula \n \n \n Input Errors - remove leading zeroes \n\t      math operations must be separated by numbers\n\n Math Error - can't be calculated, change number\n\n Syntax Error - input numbers characters incorrect \n\n Input number then function - enter number then function button \t\t\t                don't use parenthesis")
+    
     def run(self):
         self.root.mainloop()
 
