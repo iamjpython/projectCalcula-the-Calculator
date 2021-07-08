@@ -60,17 +60,22 @@ class Calculator:
         self.bclear =tk.Button(self.root, text="AC", padx=22, pady=10, command=self.ac,bg = "orange", fg= "black").grid(row=4,column=4,pady=5)
         self.bequal =tk.Button(self.root, text="=", padx=26, pady=10, command=self.evaluate, bg = "yellow").grid(row=7,column=4,pady=5)
         
-    def button_click(self,num):
-        dis = self.e.get()
-        self.e.delete(0,END)
-        self.e.insert(0,str(dis)+str(num)) 
+		self.root.bind('<Return>', self.evaluate)
+
+	def button_click(self,num):
+		dis = self.e.get()
+		x = self.e.index(INSERT)
+		self.e.insert(x,str(num)) 
 
     def ac(self):
         pass
 
-    def delete(self):
-        pass
-
+	def delete(self):
+		global c
+		c = list(self.e.get())
+		x = self.e.index(INSERT) - 1
+		self.e.delete(x, x+1)
+        
     def duplicate(self,num):
         global c
         c = c+str(num)
