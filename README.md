@@ -33,9 +33,9 @@ This calculator application have additional features which can perform some of t
     * `sin`
     * `cos`
     * `tan`
-    * `asin`
-    * `acos`
-    * `atan`
+    * `arcsin`
+    * `arccos`
+    * `arctan`
     * `log`
     * `ln`
     * `√`
