@@ -1,129 +1,121 @@
 import math
+import operator
+from pyparsing import *
 
-class Calcula():
+stack = []
 
-    def __init__(self):
-        self.answer = 0
-        self.input = ""
+def push_stack(toks):
+	stack.append(toks[0])
 
-    def all_clear(self):
-        return self.answer
+def push_negative(toks):
+	for t in toks:
+		if t == '-':
+			stack.append("unary -")
+		else:
+			break
 
-    def delete(self, cal):
-        input = str(cal)
-        ans = input[0:len(input)-1]
-        return ans
+parsed = None
 
-    # 4 basic operators ( + , - , × , ÷ )
-    def evaluate(self):
-        try:
-            input = str(self.input)
-            ans = eval(input)
-            return ans
-        except ZeroDivisionError:
-            return "Math Error"
+def Parsing():
+	global parsed
+	if not parsed:
+		e = CaselessKeyword("E")
+		pi = CaselessKeyword("PI")
+		fnumber = Regex(r"[+-]?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?")
+		ident = Word(alphas, alphanums + "_$")
 
-    def sin(self, num):
-        try:
-            input = num
-            ans = math.sin(input)
-            return ans
-        except ValueError:
-            return "Syntax Error"
+		plus, minus, mult, div = map(Literal, "+-*/")
+		lpar, rpar = map(Suppress, "()")
+		add_operation = plus | minus
+		mult_operation = mult | div
+		exp_operation = Literal("^")
 
-    def cos(self, num):
-        try:
-            input = num
-            ans = math.cos(input)
-            return ans
-        except ValueError:
-            return "Syntax Error"
+		expr = Forward()
+		expr_list = delimitedList(Group(expr))
 
-    def tan(self, num):
-        try:
-            input = num
-            ans = math.tan(input)
-            return ans
-        except ValueError:
-            return "Syntax Error"
+		def insert_fn_argcount_tuple(t):
+			fn = t.pop(0)
+			num_args = len(t[0])
+			t.insert(0, (fn, num_args))
 
-    # arcsin
-    def asin(self, num):
-        try:
-            input = num
-            ans = math.asin(input)
-            return ans
-        except ValueError:
-            return "Math Error"
+		fn_call = (ident + lpar - Group(expr_list) + rpar).setParseAction(insert_fn_argcount_tuple)
+		atom = (
+			add_operation[...]
+			+ (
+				(fn_call | pi | e | fnumber | ident).setParseAction(push_stack)
+				| Group(lpar + expr + rpar)
+			)
+		).setParseAction(push_negative)
 
-    # arccos
-    def acos(self, num):
-        try:
-            input = num
-            ans = math.acos(input)
-            return ans
-        except ValueError:
-            return "Math Error"
+		factor = Forward()
+		factor <<= atom + (exp_operation + factor).setParseAction(push_stack)[...]
+		term = factor + (mult_operation + factor).setParseAction(push_stack)[...]
+		expr <<= term + (add_operation + term).setParseAction(push_stack)[...]
+		parsed = expr
 
-    # arctan
-    def atan(self, num):
-        try:
-            input = num
-            ans = math.atan(input)
-            return ans
-        except ValueError:
-            return "Math Error"
+	return parsed
 
-    def ln(self, num):
-        try:
-            input = num
-            ans = math.log(float(input))
-            return ans
-        except ValueError:
-            return "Math Error"
+epsilon = 1e-12
 
-    def log(self, num):
-        try:
-            input = num
-            ans = math.log10(input)
-            return ans
-        except ValueError:
-            return "Math Error"
+operations = {
+	"+": operator.add,
+	"-": operator.sub,
+	"*": operator.mul,
+	"/": operator.truediv,
+	"^": operator.pow,
+}
 
-    def factorial(self, num):
-        try:
-            input = num
-            ans = math.factorial(input)
-            return ans
-        except ValueError:
-            return "Math Error"
+functions = {
+	"sin": math.sin, 
+	"cos": math.cos,
+	"tan": math.tan,
+	"asin": math.asin,
+	"acos": math.acos, 
+	"atan": math.atan,
+	"sqrt": math.sqrt,
+	"fact": math.factorial,
+	"log": math.log10,
+	"ln": math.log,
+	}
 
-    def square(self, num):
-        try:
-            input = num
-            ans = math.pow(input, 2)
-            return ans
-        except ValueError:
-            return "Syntax Error"
 
-    def cube(self, num):
-        try:
-            input = num
-            ans = math.pow(input, 3)
-            return ans
-        except ValueError:
-            return "Syntax Error"
+def process(s):
+	op, num_args = s.pop(), 0
+	if isinstance(op, tuple):
+		op, num_args = op
+	if op == "unary -":
+		return -process(s)
+	if op in "+-*/^":
+		try:
+			operation_2 = process(s)
+			operation_1 = process(s)
+			return operations[op](operation_1, operation_2)
+		except:
+			return "MATH ERROR"
+	elif op == "PI":
+		return round(math.pi, 2)
+	elif op == "E":
+		return math.e
+	elif op in functions:
+		try:
+			args = reversed([process(s) for _ in range(num_args)])
+			return functions[op](*args)
+		except ValueError:
+			return "ERROR"
+	elif op[0].isalpha():
+		raise Exception("Invalid Identifier '%s'" % op)
+	else:
+		try:
+			return int(op)
+		except ValueError:
+			return float(op)
 
-    def square_root(self, num):
-        try:
-            input = num
-            ans = math.sqrt(input)
-            return ans
-        except ValueError:
-            return "Math Error"
-
-    def pi(self, num):
-        input = num
-        ans = math.pi*input
-        return ans
-    
+def solve(s):
+	
+	try:
+		stack[:] = []
+		results = Parsing().parseString(s, parseAll = True)
+		val = process(stack[:])
+		return val
+	except:
+		return 'SYNTAX ERROR'
