@@ -1,4 +1,3 @@
-
 # `projectCalcula - the Calculator` #
 
 ---
@@ -16,8 +15,9 @@ We used Python 3.7.9 as our programming language, then PyParsing and Tkinter as 
 
 This calculator application have additional features which can perform some of the trigonometric, logarithmic and algebraic functions together with the basic functions of a calculator.
 
- > Model 
-    
+ > Model
+  
+ * ![projectCalcula (1)](https://user-images.githubusercontent.com/85820110/124936282-fb124100-e038-11eb-9122-4aa77791747c.PNG)   
     
  > Functions
 * 0-9 Numeric Characters
