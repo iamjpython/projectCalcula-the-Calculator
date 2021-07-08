@@ -3,7 +3,7 @@
 ---
 ---
    **We**, the **TechnoSavvyCrats** developed the ***projectCalcula – the Calculator.*** 
-   This team has five determined techno-learners namely *Paul, Brian, Rhae, Faith and Kim.*
+   This team has five determined techno-learners namely *Paul, Brian, Rhae, Faith, and Kim.*
 
 
 
@@ -34,7 +34,7 @@ This calculator application have additional features which can perform some of t
     * `cos`
     * `tan`
     * `asin`
-    * `cos`
+    * `acos`
     * `atan`
     * `log`
     * `ln`
