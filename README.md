@@ -17,7 +17,8 @@ This calculator application have additional features which can perform some of t
 
  > Model
   
- ![Screenshot (75)](https://user-images.githubusercontent.com/85820110/124944438-e4231d00-e03f-11eb-9cc0-2faabe631571.png)
+ ![projectCalcula (1)](https://user-images.githubusercontent.com/85820110/124948934-b8099b00-e043-11eb-97bf-f78bc204c366.PNG)
+
  
     
  > Functions
