@@ -17,7 +17,8 @@ This calculator application have additional features which can perform some of t
 
  > Model
   
- ![projectCalcula (1)](https://user-images.githubusercontent.com/85820110/124936282-fb124100-e038-11eb-9122-4aa77791747c.PNG)   
+ ![projectCalcula (1)](https://user-images.githubusercontent.com/85820110/124944299-c5bd2180-e03f-11eb-8a3d-852f471e4945.PNG)
+ 
     
  > Functions
 * 0-9 Numeric Characters
