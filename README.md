@@ -9,7 +9,7 @@
 
 ## >Libraries ##
 
-We used Python 3.7.9 as our programming language, then PyParsing and Tkinter as our main libraries for the calculator logic and GUI Framework respectively.
+We used **Python 3.7.9** as our programming language, then ***PyParsing*** and ***Tkinter*** as our main libraries for the calculator logic and GUI Framework respectively.
 
  ## >Features ##
 
@@ -48,13 +48,13 @@ This calculator application have additional features which can perform some of t
 
 ## >TechnoSavvyCrats DEVELOPERS ##
 
-| Name                      | Username                                              |
-| ------------------------- | ----------------------------------------------------- |
-| John Paul Aguilar         | [iamjpython](https://github.com/iamjpython)           |
-| Joseph Brian Seit         | [JosephBrianSeit](https://github.com/JosephBrianSeit) |
-| Gwyne Rhae Escantilla     | [GwyneEscantilla](https://github.com/GwyneEscantilla) |
-| Zanro Kim Tabat           | [ZANRO](https://github.com/ZANRO)                     |
-| Aireen Faith Celebrado    | [neeria04](https://github.com/neeria04)               |
+| Name                       |Username                                               |
+| -------------------------- | ----------------------------------------------------- |
+| **John Paul Aguilar**      | [iamjpython](https://github.com/iamjpython)           |
+| **Joseph Brian Seit**      | [JosephBrianSeit](https://github.com/JosephBrianSeit) |
+| **Gwyne Rhae Escantilla**  | [GwyneEscantilla](https://github.com/GwyneEscantilla) |
+| **Zanro Kim Tabat**        | [ZANRO](https://github.com/ZANRO)                     |
+| **Aireen Faith Celebrado** | [neeria04](https://github.com/neeria04)               |
 
 ### NOTE! ###
 TO EXPERIENCE AND FIND MORE ABOUT OUR CALCULATOR, TRY RUNNING main.py FROM MASTER BRANCH.
