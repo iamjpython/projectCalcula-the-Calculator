@@ -19,7 +19,6 @@ parsed = None
 def Parsing():
 	global parsed
 	if not parsed:
-		e = CaselessKeyword("E")
 		pi = CaselessKeyword("PI")
 		fnumber = Regex(r"[+-]?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?")
 		ident = Word(alphas, alphanums + "_$")
@@ -42,7 +41,7 @@ def Parsing():
 		atom = (
 			add_operation[...]
 			+ (
-				(fn_call | pi | e | fnumber | ident).setParseAction(push_stack)
+				(fn_call | pi | fnumber | ident).setParseAction(push_stack)
 				| Group(lpar + expr + rpar)
 			)
 		).setParseAction(push_negative)
@@ -55,8 +54,6 @@ def Parsing():
 
 	return parsed
 
-epsilon = 1e-12
-
 operations = {
 	"+": operator.add,
 	"-": operator.sub,
@@ -66,12 +63,12 @@ operations = {
 }
 
 functions = {
-	"sin": math.sin, 
+	"sin": math.sin, # sin(60)
 	"cos": math.cos,
 	"tan": math.tan,
-	"asin": math.asin,
-	"acos": math.acos, 
-	"atan": math.atan,
+	"arcsin": math.asin,
+	"arccos": math.acos, 
+	"arctan": math.atan,
 	"sqrt": math.sqrt,
 	"fact": math.factorial,
 	"log": math.log10,
@@ -94,14 +91,12 @@ def process(s):
 			return "MATH ERROR"
 	elif op == "PI":
 		return round(math.pi, 2)
-	elif op == "E":
-		return math.e
 	elif op in functions:
 		try:
 			args = reversed([process(s) for _ in range(num_args)])
 			return functions[op](*args)
 		except ValueError:
-			return "ERROR"
+			return "MATH ERROR"
 	elif op[0].isalpha():
 		raise Exception("Invalid Identifier '%s'" % op)
 	else:
