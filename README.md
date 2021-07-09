@@ -63,5 +63,7 @@ TO EXPERIENCE AND FIND MORE ABOUT OUR CALCULATOR, TRY RUNNING `main.py` FROM MAS
 ---
 
 # THANK YOU AND ENJOY SOLVING USING THIS APPLICATION!! #
+
+![Untitled-1](https://user-images.githubusercontent.com/85820110/125091396-ef8b4c80-e102-11eb-98e8-3a0ed8a1a694.png)
 ## yOuRs TrUlY, TechnoSavvyCrats ##
 
