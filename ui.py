@@ -5,7 +5,7 @@ import webbrowser
 import tkinter.messagebox as message
 from calculator import solve
 
-c =  []
+c = []
 
 class Calculator:
 	def __init__(self) -> None:
