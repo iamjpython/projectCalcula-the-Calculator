@@ -57,4 +57,11 @@ This calculator application have additional features which can perform some of t
 | **Aireen Faith Celebrado** | [neeria04](https://github.com/neeria04)               |
 
 ### NOTE! ###
-TO EXPERIENCE AND FIND MORE ABOUT OUR CALCULATOR, TRY RUNNING `main.py` FROM MASTER BRANCH.
+TO EXPERIENCE AND FIND MORE ABOUT OUR CALCULATOR, TRY RUNNING `main.py` FROM MASTER BRANCH WITH THE NECESSARY SET UP OR YOU MAY OPT TO WATCH OUR PROJECT VIDEO PRESENTATION ON THIS LINK [presentation by TechnoSavvyCrats](https://drive.google.com/file/d/18Bic_XSLK8dx_gWHdGs1-rUpOiAdpsAT/view?usp=sharing).
+
+---
+---
+
+# THANK YOU AND ENJOY SOLVING USING THIS APPLICATION!! #
+## yOuRs TrUlY, TechnoSavvyCrats ##
+
